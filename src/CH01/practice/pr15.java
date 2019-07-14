@@ -9,7 +9,7 @@ import java.util.Scanner;
  */
 public class pr15
 {
-    // 왼쪽아래
+    // 왼쪽 아래가 직각
     static void triangleLB(int n)
     {
         for(int i=1; i<=n; i++)
@@ -24,7 +24,7 @@ public class pr15
 
     }
 
-    // 왼쪽 위
+    // 왼쪽 위가 직각
     static void triangleLU(int n)
     {
         for(int i=1; i<=n; i++)
@@ -39,38 +39,42 @@ public class pr15
     }
 
 
-    // 오른쪽 위
+    // 오른쪽 위가 직각
     static void triangleRU(int n)
     {
         for(int i=1; i<=n; i++)
         {
-            for(int j=i; j<=n; j++)
+            for(int j=1; j<=n; j++)
             {
                 if(i > j) System.out.print(' ');
                 else System.out.print('*');
             }
             System.out.println();
         }
+        System.out.println();
     }
 
-    // 오른쪽아래
+    // 오른쪽 아래가 직각
     static void triangleRB(int n)
     {
         for(int i=1; i<=n; i++)
         {
-            for(int j=1; j<=i; j++)
+            for(int j=1; j<=n; j++)
             {
-                System.out.print('*');
+                if((n-i)+1 > j) System.out.print(' ');
+                else System.out.print('*');
             }
             System.out.println();
         }
+        System.out.println();
     }
+
     public static void main(String[] args)
     {
         Scanner stdIn = new Scanner(System.in);
         int n;
 
-        System.out.println("왼쪽 아래가 직각인 이등변 삼각형을 출력한다.");
+        System.out.println("이등변 삼각형을 출력한다.");
 
         do
         {
@@ -81,6 +85,6 @@ public class pr15
         triangleLB(n);
         triangleLU(n);
         triangleRU(n);
-        //triangleRB(n);
+        triangleRB(n);
     }
 }

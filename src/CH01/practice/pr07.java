@@ -14,17 +14,21 @@ public class pr07
         System.out.print("n의 값");
         int n = stdIn.nextInt();
 
-        if(n == 7)
-        {
-            int sum = 0;
 
-            for(int i=1; i <= n; i++)
-            {
-                sum += i;
-            }
+         int sum = 0;
+         String result = "";
 
-            System.out.println("1부터 " + n + "까지의 합은 " + sum + " 입니다.");
-        }
+         for(int i=1; i <= n; i++)
+         {
+             if(i!=1) result += "+";
+
+             sum += i;
+             result += i;
+         }
+
+
+         System.out.println(result + " = " + sum);
+
 
 
     }
