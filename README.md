@@ -1,4 +1,15 @@
-# Doit! 자료구조와 함꼐 배우는 알고리즘 입문 (자바편)
+# Doit! 자료구조와 함께 배우는 알고리즘 입문 (자바편)
+책에서 제공하는 예제를 진행한다.
 
-## 알고리즘이란?
-문제를 해결하기 위한 것으로, 명확하게 정의되고 순서가 있는 유한개으 규칙으로 이루어진 집합
+### 개발환경
+개발환경은 아래와 같다.
+* IDE: IntelliJ IDEA
+* OS: Mac OS
+
+주 개발환경은 위와 같고, windows환경에서 eclipse IDE도 부수적으로 사용한다.
+
+### 목차
+1. [기본 알고리즘](https://github.com/ssunhj2/doIt_algorithm/blob/master/src/CH01/CH01.md)
+
+
+
