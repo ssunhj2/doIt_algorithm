@@ -11,5 +11,6 @@
 ### 목차
 1. [기본 알고리즘](https://github.com/ssunhj2/doIt_algorithm/blob/master/src/CH01/CH01.md)
 
+![902](https://user-images.githubusercontent.com/22341443/61276760-9aeeb880-a7eb-11e9-99fe-ac65aa0306e5.JPG)
 
 
