@@ -30,15 +30,13 @@ public class Exam05
         int personCnt = 5;
 
         System.out.println("몸무게의 최대값을 구한다.");
-        System.out.print("사람 수 : ");
+        System.out.println("사람 수 : "+ personCnt);
 
-        int num = personCnt;
-
-        int[] weight = new int[num];
+        int[] weight = new int[personCnt];
 
         System.out.println("몸무게는 아래와 같다.");
 
-        for(int i=0; i<num; i++)
+        for(int i=0; i<personCnt; i++)
         {
             weight[i] = 50 + random.nextInt(50);
             System.out.println("weight["+i+"]: " + weight[i]);
