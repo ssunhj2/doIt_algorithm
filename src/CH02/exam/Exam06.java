@@ -1,6 +1,7 @@
 package CH02.exam;
 
 /**
+ * 실습 2-6
  * 배열을 역순으로 정렬한다.
  */
 public class Exam06 
@@ -32,15 +33,15 @@ public class Exam06
 		
 		for(int i=0; i<numCnt; i++)
 		{
-			System.out.print("numArr[" + i + "] = " + numArr[i]);
+			System.out.println("numArr[" + i + "] = " + numArr[i]);
 		}
 		
 		reverseArr(numArr);
 		
-		System.out.print("요소를 역순으로 정렬한다.");
+		System.out.println("요소를 역순으로 정렬한다.");
 		for(int i=0; i<numCnt; i++)
 		{
-			System.out.print("numArr[" + i + "] = " + numArr[i]);
+			System.out.println("numArr[" + i + "] = " + numArr[i]);
 		}
 	}
 
