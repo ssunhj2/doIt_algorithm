@@ -1,10 +1,10 @@
-package CH02.exam;
+package CH02.practice;
 
 /**
- * 실습 2-13
  * 특정 해의 경과 일수를 구한다.
+ * 단, 경과 일수를 구할때 while문을 사용한다.
  */
-public class Exam14
+public class Pr08
 {
 	static int[][] monthDays =
 	{
@@ -19,12 +19,12 @@ public class Exam14
 	
 	static int passDays(int year, int month, int day)
 	{
-		int days = day;
-		
-		for (int i = 1; i < month ; i++) {
-			days += monthDays[isLeap(year)][i-1];
+		while(--month > 0)
+		{
+			day += monthDays[isLeap(year)][month-1];
 		}
-		return days;
+
+		return day;
 	}
 	
 	public static void main(String[] args)

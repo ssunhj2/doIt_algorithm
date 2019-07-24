@@ -10,7 +10,7 @@ public class Exam08
 	{
 		int digits = 0;
 
-		String dStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+		String dStr = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 		do
 		{
@@ -21,8 +21,4 @@ public class Exam08
 		return digits;
 	}
 
-	public static void main(String[] args)
-	{
-
-	}
 }
