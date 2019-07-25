@@ -30,24 +30,51 @@ public class Pr11
 	}
 
 	// n일 뒤의 날짜를 반환한다.
-	/*Pr11 afterDate(int n)
+	Pr11 afterDate(int n)
 	{
 		Pr11 ymd = new Pr11(this.year, this.month, this.day);
+		
+		int afterDay = ymd.month + n;
+		int lastDay = monthDays[isLeap(year)][ymd.month-1]; // 이번달의 마지막 day
+		
+		if(afterDay > lastDay)
+		{
+			ymd.month++;
+			ymd.day = afterDay - lastDay;
+		}
+		else
+		{
+			ymd.day += n;
+		}
 
+		return ymd;
 	}
 
 	// n일 전의 날짜를 반환한다.
 	Pr11 beforeYmd(int n)
 	{
-
+		Pr11 ymd = new Pr11(this.year, this.month, this.day);
+		
+		int beforeDay = ymd.month - n;
+		
+		if(beforeDay <= 0)
+		{
+			ymd.month--;
+			int lastDay = monthDays[isLeap(year)][ymd.month-1]; // 지난달의 마지막 day
+			
+			ymd.day += beforeDay; // beforeDay는 음수
+		}
+		else
+		{
+			ymd.day -= n;
+		}
+		
+		return ymd;
 	}
-*/
+
 	public static void main(String[] args)
 	{
-		Pr11 ymd = new Pr11(2019, 7, 24);
-		int afterDay = 5;
-		int beforDay = 10;
-
+		
 		/*System.out.print(ymd.year +"년 " +ymd.month + "월 " + ymd.day + "일의 " + beforDay + "일전 날짜는 ");
 		Pr11 beforeYmd = beforeYmd(beforDay);
 		System.out.println(beforeYmd.year +"년 " +beforeYmd.month + "월 " + beforeYmd.day + "이다.");
