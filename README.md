@@ -11,5 +11,4 @@
 ### 목차
 1. [기본 알고리즘](https://github.com/ssunhj2/doIt_algorithm/blob/master/src/CH01/CH01.md)
 2. [기본 자료구조](https://github.com/ssunhj2/doIt_algorithm/blob/master/src/CH02/CH02.md)
-3. [검색]
-
+3. [검색](https://github.com/ssunhj2/doIt_algorithm/blob/master/src/CH03/CH03.md)
