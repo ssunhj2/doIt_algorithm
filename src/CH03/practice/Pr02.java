@@ -12,13 +12,14 @@ public class Pr02
         System.out.print("  | ");
         for (int i = 0; i < n; i++)
         {
-            System.out.print(arr[i] + " ");
+            System.out.print(i + " ");
         }
         System.out.println("\n--+---------------------");
 
         for (int i = 0; i < n; i++)
         {
-            System.out.printf("  | %"+ (i+1)+ "s\n", "*");
+            int leng = Integer.toString(arr[i]).length();
+            System.out.printf("  | %"+ (i+leng)+ "s%s\n", "*");
             System.out.print(i+ " | ");
             for (int j = 0; j < n; j++)
             {
