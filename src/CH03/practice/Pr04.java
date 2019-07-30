@@ -14,19 +14,20 @@ public class Pr04
         System.out.print("  | ");
         for (int i = 0; i < n; i++)
         {
-            System.out.print(i + " ");
+            System.out.printf("%2d", i);
         }
-        System.out.println("\n--+---------------------");
+        System.out.println("\n--+-----------------");
 
         do
         {
             int pc = (int)Math.ceil((pl + pr) / 2);
 
-            System.out.printf("  |<-%"+ pc+ "s+%"+pr+"s->\n", " ", " ");
+            System.out.printf("  |<-%"+ (pc+1) +"s+%"+ (pr+1) +"s->\n", " ", " ");
+            //System.out.printf("  |<-%"+ pc + "s+%"+pr+"s->\n", " ", " ");
             System.out.print(pc+ " | ");
             for (int i = 0; i < n; i++)
             {
-                System.out.print(arr[i] + " ");
+                System.out.printf("%2d" , arr[i]);
             }
             System.out.print("\n");
 
@@ -59,6 +60,7 @@ public class Pr04
 
         int result = binarySearch(arr, arrLength, searchNum);
 
+        System.out.println(searchNum+ "는 arr["+ result + "]에 있다.");
     }
 
 }

@@ -18,8 +18,11 @@ public class Pr02
 
         for (int i = 0; i < n; i++)
         {
-            int leng = Integer.toString(arr[i]).length();
-            System.out.printf("  | %"+ (i+leng)+ "s%s\n", "*");
+            System.out.print("  |");
+            System.out.printf("%"+ (i+1)+ "s", " ");
+           // System.out.printf("  |%"+ (i+1)+ "s%-2s\n",  "", "*");
+            System.out.printf("%-2s", "*");
+            System.out.print("\n");
             System.out.print(i+ " | ");
             for (int j = 0; j < n; j++)
             {
