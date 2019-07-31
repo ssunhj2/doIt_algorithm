@@ -2,8 +2,6 @@ package CH03.exam;
 
 import CH03.common.Id;
 
-import java.util.Arrays;
-
 /**
  * 실습 3C-1
  */
