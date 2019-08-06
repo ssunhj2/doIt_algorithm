@@ -22,8 +22,8 @@ public class Pr04
         {
             int pc = (int)Math.ceil((pl + pr) / 2);
 
-            System.out.printf("  |<-%"+ (pc+1) +"s+%"+ (pr+1) +"s->\n", " ", " ");
-            //System.out.printf("  |<-%"+ pc + "s+%"+pr+"s->\n", " ", " ");
+            System.out.printf("  |<-%"+ (2*pc+1) +"s+%"+ (pr+1) +"s->\n", " ", " ");
+
             System.out.print(pc+ " | ");
             for (int i = 0; i < n; i++)
             {

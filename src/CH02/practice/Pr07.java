@@ -31,7 +31,7 @@ public class Pr07
 
 	public static void main(String[] args)
 	{
-		int no = 59;
+		int no = 5;
 		int cd = 2;
 		int dno;
 		char[] charNo = new char[32];

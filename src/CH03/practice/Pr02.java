@@ -19,11 +19,9 @@ public class Pr02
         for (int i = 0; i < n; i++)
         {
             System.out.print("  |");
-            System.out.printf("%"+ (i+1)+ "s", " ");
-           // System.out.printf("  |%"+ (i+1)+ "s%-2s\n",  "", "*");
-            System.out.printf("%-2s", "*");
-            System.out.print("\n");
-            System.out.print(i+ " | ");
+            System.out.printf("%"+ ((2*i)+1) + "s\n","*");
+
+            System.out.print(i+ " |");
             for (int j = 0; j < n; j++)
             {
                 System.out.print(arr[j] + " ");
