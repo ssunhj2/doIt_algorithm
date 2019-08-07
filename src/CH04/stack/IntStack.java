@@ -1,29 +1,29 @@
-package CH04.common;
+package CH04.stack;
 
-public class GenericStack<E> 
+public class IntStack 
 {
 	private int max;
 	private int pointer;
-	private E [] stkArr;
+	private int[] stkArr;
 	
-	public static class EmptyStackException extends RuntimeException
+	public class EmptyStackException extends RuntimeException
 	{
 		public EmptyStackException(){}
 	}
 	
-	public static class OverflowStackException extends RuntimeException
+	public class OverflowStackException extends RuntimeException
 	{
 		public OverflowStackException(){}
 	}
 	
-	public GenericStack(int cap)
+	public IntStack(int cap)
 	{
 		pointer = 0;
 		max = cap;
 		
 		try
 		{
-			stkArr = (E[]) new Object[max];
+			stkArr = new int[max];
 		}
 		catch(OutOfMemoryError e)
 		{
@@ -33,7 +33,7 @@ public class GenericStack<E>
 	}
 	
 	// push
-	public E push(E x) throws OverflowStackException
+	public int push(int x) throws OverflowStackException
 	{
 		if(pointer >= max)
 		{
@@ -44,7 +44,7 @@ public class GenericStack<E>
 	}
 	
 	// pop
-	public E pop() throws EmptyStackException
+	public int pop() throws EmptyStackException
 	{
 		if(pointer <= 0)
 		{
@@ -55,7 +55,7 @@ public class GenericStack<E>
 	}
 	
 	// peek
-	public E peek() throws EmptyStackException
+	public int peek() throws EmptyStackException
 	{
 		if(pointer <= 0)
 		{
@@ -65,7 +65,7 @@ public class GenericStack<E>
 		return stkArr[pointer-1];
 	}
 	
-	public int indexOf(E x)
+	public int indexOf(int x)
 	{
 		for (int i = pointer-1; i >= 0; i--) 
 		{

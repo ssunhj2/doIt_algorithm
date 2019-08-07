@@ -2,10 +2,9 @@ package CH04.practice;
 
 import java.util.Scanner;
 
-import CH04.common.IntStack;
+import CH04.stack.IntStack;
 /**
  * clear, indexOf, isEmpty, isFull 을 사용하는 프로그램을 만든다.
- *
  */
 public class Pr01 
 {

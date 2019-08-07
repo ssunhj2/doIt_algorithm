@@ -1,4 +1,4 @@
-package CH04.common;
+package CH04.stack;
 
 public class TwoIntStack 
 {
@@ -166,29 +166,59 @@ public class TwoIntStack
 		return result;
 	}
 	
-	/*public boolean isEmpty()
+	public boolean isEmpty(String stkType)
 	{
-		return (pointer <= 0);
+		boolean isEmpty = false;
+		
+		if("stkA".equals(stkType))
+		{
+			if(ptrA <= 0) isEmpty = true;
+		}
+		else if("stkB".equals(stkType))
+		{
+			if(ptrB >= max) isEmpty = true;
+		}
+		return isEmpty;
 	}
+	
 	public boolean isFull()
 	{
-		return (pointer >= max);
+		return (ptrA - 1 >= ptrB);
 	}
 	
 	// 스택안의 모든 데이터를 bottom ~ top 순으로 출력
-	public void dump()
+	public void dump(String stkType)
 	{
-		if(pointer <= 0)
+		if("stkA".equals(stkType))
 		{
-			System.out.println("스택이 비어있다.");
-		}
-		else
-		{
-			for (int i = 0; i < pointer; i++)
+			if(ptrA <= 0)
 			{
-				System.out.print(stkArr[i] + " ");
+				System.out.println("스택이 비어있다.");
 			}
-			System.out.println();
+			else
+			{
+				for (int i = 0; i < ptrA; i++)
+				{
+					System.out.print(stkArr[i] + " ");
+				}
+				System.out.println();
+			}
 		}
-	}*/
+		else if("stkB".equals(stkType))
+		{
+			if(ptrB >= max)
+			{
+				System.out.println("스택이 비어있다.");
+			}
+			else
+			{
+				for (int i = max; i > ptrB; i--)
+				{
+					System.out.print(stkArr[i] + " ");
+				}
+				System.out.println();
+			}
+		}
+		
+	}
 }
