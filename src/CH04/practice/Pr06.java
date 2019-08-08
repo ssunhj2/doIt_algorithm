@@ -2,20 +2,21 @@ package CH04.practice;
 
 import java.util.Scanner;
 
+import CH04.queue.GenericQueue;
 import CH04.queue.IntQueue;
 /**
  * 임의의 데이터를 검색하는 메서드 추가
  */
-public class Pr05 
+public class Pr06 
 {
 	public static void main(String[] args)
 	{
 		Scanner in = new Scanner(System.in);
-		IntQueue que = new IntQueue(64);
+		GenericQueue gQue = new GenericQueue(64);
 		
 		while(true)
 		{
-			System.out.println("현재 데이터수 : " + que.getSize() + " / " + que.dataSize());
+			System.out.println("현재 데이터수 : " + gQue.getSize() + " / " + gQue.dataSize());
 			
 			System.out.println("아래 목록을 보고 수행할 번호를 입력한다.");
 			System.out.print("(1)enqueue  (2)dequeue  (3)peek  (4)dump  (0)exit : ");
@@ -32,9 +33,9 @@ public class Pr05
 					x = in.nextInt();
 					try
 					{
-						que.enque(x);
+						gQue.enque(x);
 					}
-					catch(IntQueue.overflowIntQueException e)
+					catch(GenericQueue.overflowIntQueException e)
 					{
 						System.out.println("큐가 가득찼다.");
 					}
@@ -42,10 +43,10 @@ public class Pr05
 				case 2:
 					try
 					{
-						x = que.deque();
+						x = (int)gQue.deque();
 						System.out.println("dequeue 한 Data는 "+ x + " 이다.");
 					}
-					catch(IntQueue.EmptyIntQueException e)
+					catch(GenericQueue.EmptyIntQueException e)
 					{
 						System.out.println("큐가 비었다.");
 					}
@@ -53,16 +54,16 @@ public class Pr05
 				case 3:
 					try
 					{
-						x = que.peek();
+						x = (int)gQue.peek();
 						System.out.println("peek 한 Data는 " + x + " 이다.");
 					}
-					catch(IntQueue.EmptyIntQueException e)
+					catch(GenericQueue.EmptyIntQueException e)
 					{
 						System.out.println("큐가 비었다.");
 					}
 					break;
 				case 4:
-					que.dump();
+					gQue.dump();
 					break;
 			}
 		}

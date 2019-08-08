@@ -1,5 +1,8 @@
 package CH04.queue;
 
+/**
+ * Practice 07
+ */
 public class IntDequeue 
 {
 	private int max; // 큐 용량
@@ -34,11 +37,23 @@ public class IntDequeue
 		
 	}
 	
-	// enque
-	public int enque(int data) throws overflowIntQueException
+	// Enque Front
+	public int enqueFront(int data) throws overflowIntQueException
 	{
 		if(dataNum >= max) throw new overflowIntQueException();
 		
+		if(--front < 0) front = max - 1;
+		que[front] = data;
+		
+		dataNum++;
+		
+		return data;
+	}
+	
+	// Enque Rear
+	public int enqueRear(int data) throws overflowIntQueException
+	{
+		if(dataNum >= max) throw new overflowIntQueException();
 		que[rear++] = data;
 		dataNum++;
 		
@@ -48,14 +63,27 @@ public class IntDequeue
 	}
 	
 	// deque 
-	public int deque() throws EmptyIntQueException
+	public int dequeFront() throws EmptyIntQueException
 	{
 		if(dataNum <= 0) throw new EmptyIntQueException();
 		
 		int data = que[front++];
 		dataNum--;
 		
-		if(front == max) front = 0;
+		if(front >= max) front = 0;
+		
+		return data;
+	}
+	
+	// deque 
+	public int dequeRear() throws EmptyIntQueException
+	{
+		if(dataNum <= 0) throw new EmptyIntQueException();
+		
+		if(--rear < 0) rear = max-1;
+		
+		int data = que[rear];
+		dataNum--;
 		
 		return data;
 	}
