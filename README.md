@@ -13,3 +13,4 @@
 2. [기본 자료구조](https://github.com/ssunhj2/doIt_algorithm/blob/master/src/CH02/CH02.md)
 3. [검색](https://github.com/ssunhj2/doIt_algorithm/blob/master/src/CH03/CH03.md)
 4. [스택과 큐](https://github.com/ssunhj2/doIt_algorithm/blob/master/src/CH04/CH04.md)
+5. [재귀 알고리즘](https://github.com/ssunhj2/doIt_algorithm/blob/master/src/CH05/CH05.md)
