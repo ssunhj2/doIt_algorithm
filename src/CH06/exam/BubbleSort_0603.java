@@ -22,21 +22,8 @@ public class BubbleSort_0603
 					CommonUtil.swap(intArr, (j-1), j);
 					last = j;
 				}
-				k = last;
 			}
-		}
-		for (int i = 0; i < num-1; i++)
-		{
-			int exchg = 0;
-			for (int j = num-1; j > i; j--) 
-			{
-				if(intArr[j-1] > intArr[j]) 
-				{
-					CommonUtil.swap(intArr, (j-1), j);
-					exchg++;
-				}
-			}
-			if(exchg == 0) break;
+			k = last;
 		}
 	}
 	
@@ -44,7 +31,7 @@ public class BubbleSort_0603
 	{
 		System.out.println("기본 Bubble Sort");
 		
-		int[] intArr = {55, 43, 10, 3, 77, 35};
+		int[] intArr = {22, 5, 11, 32, 120, 68, 70};
 
 		CommonUtil.arrayAddPrint(intArr);
 		

@@ -20,7 +20,7 @@ public class Pr03
 	
 	static int gcdArray(int arr[], int idx, int num)
 	{
-		if(num == 1) // 요소 개수가 1개일떄
+		if(num == 1) // 요소 개수가 1개일때
 		{
 			return arr[idx];
 		}
@@ -36,7 +36,7 @@ public class Pr03
 	
 	public static void main(String[] args) 
 	{
-		int[] intArr = {2,4,7,9};
+		int[] intArr = {12,3,9,9};
 		
 		System.out.println(intArr.length +"개 정수들의 최대공약수를 구한다.");
 		
