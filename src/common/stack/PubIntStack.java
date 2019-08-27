@@ -107,11 +107,21 @@ public class PubIntStack
 		}
 		else
 		{
-			for (int i = 0; i < pointer; i++)
+			System.out.print("{");
+			int i = 0;
+			while(i < pointer-1)
+			{
+				System.out.printf("%d ,", stkArr[i]);
+				i++;
+			}
+			System.out.printf("%d}\n", stkArr[pointer-1]);
+			
+			
+			/*for (int i = 0; i < pointer; i++)
 			{
 				System.out.print(stkArr[i] + " ");
 			}
-			System.out.println();
+			System.out.println();*/
 		}
 	}
 }

@@ -21,13 +21,13 @@ public class CommonUtil
 	}
 	
 	// 배열의 값을 출력한다.
-		public static void arrayAddPrint(int[] intArr, int start, int end) 
+	public static void arrayAddPrint(int[] intArr, int start, int end) 
+	{
+		for (int i = start; i < end; i++) 
 		{
-			for (int i = start; i < end; i++) 
-			{
-				System.out.println("intArr["+ i + "]: " + intArr[i]);
-			}
+			System.out.println("intArr["+ i + "]: " + intArr[i]);
 		}
+	}
 	
 	// int형 배열 intArr[index1]과 intArr[index2]를 교환한다.
 	public static void swap(int[] intArr, int index1, int index2)
