@@ -6,15 +6,37 @@ import common.CommonUtil;
  * 퀵 정렬 (재귀)
  * 요소의 개수가 적은 그룹을 먼저 나눈다.
  * 분할된 요소의 개수가 9개 이하인 경우 단순삽입정렬을 수행한다.
+ * 나눠진 배열요소 개수가 3개 이상이면 임의로 요소 3개를 선택하고 그 중 가운데 값 요소를 피벗으로 선택한다.
  */
-public class QuickSort_Q13_1 
+public class QuickSort_Q14_1 
 {	
+	// 가운데값을 반환한다.
+	static int getMidValue(int start, int mid, int end)
+	{
+		if(start >= mid)
+		{
+			if(mid >= end) return mid; 
+			else if(start <= end) return start;
+			else return end;
+			
+		}
+		else if(start <= end)
+		{
+			if(start >= mid) return start;
+			if(mid >= end) return end;
+			else return mid;
+		}
+		else return start;
+	}
+	
 	// 퀵 정렬(재귀)
 	static void quickSort(int[] intArr, int left, int right)
 	{
 		int pl = left;
 		int pr = right;
-		int pivot = intArr[(pl+pr)/2];
+		int pivot = getMidValue(pl, intArr[(pl+pr)/2], pr);
+		System.out.println("피벗값:" + pivot);
+		System.out.println();
 		
 		System.out.println("<Quick>");
 		System.out.printf("intArr[%d] ~ intArr[%d] : {", left, right);
@@ -106,8 +128,8 @@ public class QuickSort_Q13_1
 	
 	public static void main(String[] args)
 	{
+		
 		int[] intArr = {5, 8, 4, 2, 6, 1, 3, 9, 7};
-	
 		System.out.print("배열 초기값: {");
 		CommonUtil.arrayhorizPrint(intArr);
 		System.out.println("}\n");
@@ -116,6 +138,6 @@ public class QuickSort_Q13_1
 		
 		System.out.print("\n정렬완료:{");
 		CommonUtil.arrayhorizPrint(intArr);
-		System.out.println("}");
+		System.out.println("}");		
 	}
 }
