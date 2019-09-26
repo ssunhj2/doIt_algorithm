@@ -1,7 +1,7 @@
 package CH08.practice;
 
 /**
- * 문제1
+ * 문제2
  * 브루트  - 포스법으로 문자열을 검색하는 프로그램의 과정을 출력하도록 작성한다.
  */
 public class BFmatch_Q1 
@@ -12,30 +12,47 @@ public class BFmatch_Q1
 		int pp = 0; // pattern 위치
 		
 		int result = 0;
-		
+		int patP = 0;
+		int txtP = 0;
 		while(pt != text.length() && pp != pat.length())
 		{
-			for (int i = 0; i < pat.length(); i++) 
+			if(pp == 0)
 			{
-				if(i == 0) System.out.printf("%-2s%"+(text.length())+"s\n", pt, text);
-				else System.out.printf("%-2s%"+(text.length())+"s\n"," ",text);
-				
-				String sign = text.charAt(pt) == pat.charAt(pp) ? "+" : "|";
-				
-				System.out.printf("%-"+(2+pp+pt)+"s%s\n", " ", sign);
-				System.out.printf("%-"+(2+pt)+"s%s\n\n"," ", pat);
+				System.out.printf("%-2s", pt);
+				patP = pt;
 			}
+			else
+			{
+				System.out.print("  ");
+			}
+			
+			System.out.println(text);
+			
+			System.out.print("  ");
+			for (int i = 0; i < (pp+patP); i++) 
+			{
+				System.out.print(" ");
+			}
+			System.out.println(text.charAt(pt) == pat.charAt(pp) ? "+" : "|");
+			
+			System.out.print("  ");
+			for (int i = 0; i < patP; i++) 
+			{
+				System.out.print(" ");
+			}
+			System.out.println(pat + "\n");
 			
 			if(text.charAt(pt) == pat.charAt(pp))
 			{
 				pt++;
 				pp++;
+				result++;
 			}
 			else
 			{
 				pt = pt - pp + 1;
 				pp = 0;
-				
+				result++;
 			}
 			
 		}

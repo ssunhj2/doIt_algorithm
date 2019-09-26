@@ -14,6 +14,7 @@ public class BmMatch_Q4
 		int patLeng = pat.length();
 		int[] skip = new int[Character.MAX_VALUE + 1]; // 건너뛰기 표
 		
+		// 건너뛰기 표 만들기
 		for(pt=0; pt <= Character.MAX_VALUE; pt++)
 		{
 			skip[pt] = patLeng;
@@ -26,7 +27,7 @@ public class BmMatch_Q4
 		
 		while(pt < textLeng)
 		{
-			pp = patLeng - 1;
+			pp = patLeng - 1; // 끝 요소 검색
 			
 			while(text.charAt(pt) == pat.charAt(pp))
 			{
