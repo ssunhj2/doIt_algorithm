@@ -1,12 +1,14 @@
-package CH09.exam;
+package CH09.practice;
 
 import java.util.Comparator;
+
+import CH09.practice.LinkedList_Q1.Node;
 
 /**
  * 연결리스트
  * 커서(인덱스)로 연결리스트 만들기
  */
-public class ArrLinkedList_0903<E> 
+public class ArrLinkedList_Q4<E> 
 {
 	class Node<E>
 	{
@@ -30,7 +32,7 @@ public class ArrLinkedList_0903<E>
 	private static final int NULL = -1;
 
 	// 생성자
-	public ArrLinkedList_0903(int capacity)
+	public ArrLinkedList_Q4(int capacity)
 	{
 		head = crnt = max = deleted = NULL;
 		try 
@@ -43,7 +45,7 @@ public class ArrLinkedList_0903<E>
 			size = capacity;
 		}
 		catch (OutOfMemoryError e) 
-		{
+		{				// 배열 생성에 실패
 			size = 0;
 		}
 	}
@@ -82,7 +84,7 @@ public class ArrLinkedList_0903<E>
 		{
 			int rec = deleted;
 			deleted = idx; // free의 머리노드가 이전노드가 아니라 idx를 가리키도록 한다.(삽입)
-			n[rec].dnext = rec; // 삭제한 레코드(이전노드)의 index를 저장한다
+			n[rec].dnext = rec; // free 리스트에 삽입 이전에 deleted가 가리키던 index를 가리키도록 한다.
 		}
 	}
 
@@ -195,9 +197,9 @@ public class ArrLinkedList_0903<E>
 					ptr = n[ptr].next; // 다음커서 찾기
 					if (ptr == NULL) return; // 없는 경우
 				}
-				n[ptr].next = NULL; // 다음노드
+				n[ptr].next = NULL; // 지울 노드를 next로 가지고 있는 next 삭제
 				deleteIndex(ptr); // 찾은 노드 삭제
-				n[ptr].next = n[p].next; // 지운 노드의 다음노드를 가리키게 한다.
+				n[ptr].next = n[p].next; // 지울 노드의 next를 지울노드의 다음노드를 가리키게 한다.
 				crnt = ptr;
 			}
 		}
@@ -255,4 +257,45 @@ public class ArrLinkedList_0903<E>
 		}
 	}
 
+/* Q4: 서로 같은 노드를 찾아 가장 앞쪽의 노드를 남기고 모두 삭제한다. */	
+	public void purge(Comparator <? super E> c)
+	{
+		int ptr = head;
+		
+		while(ptr != NULL)
+		{
+			int count = 0;
+			int ptr2 = ptr;
+			int pre = ptr;
+			
+			while(n[pre].next != NULL)
+			{
+				ptr2 = n[pre].next;
+				if(c.compare(n[ptr].data, n[ptr2].data) == 0) // 같은 노드인 경우
+				{
+					remove(ptr2);
+					count++;
+				}
+				else
+				{
+					pre = ptr2;
+				}
+			}
+			
+			if(count == 0)
+			{
+				ptr = n[ptr].next;
+			}
+			else
+			{
+				int temp = ptr;
+				remove(ptr);
+				ptr = temp;
+			}
+		}
+		crnt = head;
+	}
+	
+/* ------------------------------------------------*/	
+	
 }

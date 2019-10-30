@@ -8,7 +8,7 @@ import java.util.Scanner;
  * 커서(인덱스)로 연결리스트 만들기 예제 실행
  *
  */
-public class ArrLinkedListTester_0904 {
+public class ArrLinkedListTest_0904 {
 
 	static Scanner stdIn = new Scanner(System.in);
 	// 데이터 (회원번호 + 이름)
@@ -82,27 +82,20 @@ public class ArrLinkedListTester_0904 {
 		DUMP(       "모든 노드를 출력"),
 		TERMINATE(  "종료");
 
-		private final String message;
+		private final String message;				// 나타낼 문자열 
 
-		static Menu MenuAt(int idx) 
-		{
+		static Menu MenuAt(int idx) {				// 서수가 idx인 열거를 반환
 			for (Menu m : Menu.values())
-			{	
 				if (m.ordinal() == idx)
-				{
 					return m;
-				}
-			}
 			return null;
 		}
 
-		Menu(String string) 
-		{
+		Menu(String string) {						// 생성자
 			message = string;
 		}
 
-		String getMessage()
-		{
+		String getMessage() {						// 나타낼 문자열을 반환
 			return message;
 		}
 	}

@@ -1,4 +1,4 @@
-package CH09.exam;
+package CH09.practice;
 
 import java.util.Comparator;
 
@@ -6,7 +6,7 @@ import java.util.Comparator;
  * 연결리스트
  * 커서(인덱스)로 연결리스트 만들기
  */
-public class ArrLinkedList_0903<E> 
+public class ArrLinkedList_Q6<E> 
 {
 	class Node<E>
 	{
@@ -25,14 +25,15 @@ public class ArrLinkedList_0903<E>
 	private int size;
 	private int max;
 	private int head;
+	private int tail; // 꼬리노드
 	private int crnt;
 	private int deleted;
 	private static final int NULL = -1;
 
 	// 생성자
-	public ArrLinkedList_0903(int capacity)
+	public ArrLinkedList_Q6(int capacity)
 	{
-		head = crnt = max = deleted = NULL;
+		head = tail = crnt = max = deleted = NULL;
 		try 
 		{
 			n = new Node[capacity];
@@ -43,7 +44,7 @@ public class ArrLinkedList_0903<E>
 			size = capacity;
 		}
 		catch (OutOfMemoryError e) 
-		{
+		{				// 배열 생성에 실패
 			size = 0;
 		}
 	}
@@ -82,7 +83,7 @@ public class ArrLinkedList_0903<E>
 		{
 			int rec = deleted;
 			deleted = idx; // free의 머리노드가 이전노드가 아니라 idx를 가리키도록 한다.(삽입)
-			n[rec].dnext = rec; // 삭제한 레코드(이전노드)의 index를 저장한다
+			n[rec].dnext = rec; // free 리스트에 삽입 이전에 deleted가 가리키던 index를 가리키도록 한다.
 		}
 	}
 
@@ -106,12 +107,15 @@ public class ArrLinkedList_0903<E>
 	// 머리에 노드를 삽입
 	public void addFirst(E obj) 
 	{
+		boolean empty = (tail == NULL);
 		int ptr = head; // head가 이전에 가리키던 노드 저장
 		int rec = getInsertIndex(); // 삽입을 위해 index를 구한다.
 		if (rec != NULL)
 		{
 			head = crnt = rec; // 머리, 선택노드가 삽입을 위한 index를 가리키게 한다.
 			n[head].set(obj, ptr); // prt: head가 이전에 가리키던 커서를 next로 가르키도록 한다.
+			
+			if(empty) tail = crnt;
 		}
 	}
 
@@ -124,16 +128,12 @@ public class ArrLinkedList_0903<E>
 		}
 		else 
 		{
-			int ptr = head; // head가 이전에 가리키던 노드
-			while (n[ptr].next != NULL) // 가장 끝 노드를 찾는다.
-			{
-				ptr = n[ptr].next; // next 노드를 찾는다.
-			}
 			int rec = getInsertIndex(); // 삽입 할 index를 받아온다.
 			if (rec != NULL) 
 			{	
-				n[ptr].next = crnt = rec; // 끝노드의 다음노드(빈노드)에 index를 넣는다.
-				n[rec].set(obj, NULL); // 다음노드의 커서를 null로 하여 삽입한다.
+				n[tail].next = crnt = rec; // 삽입 전 현재 tail의  next index를 새로 삽입할 index로 변경해준다.
+				n[rec].set(obj, NULL); // 새로 받아온 index에 삽입
+				tail = rec; // tail에 추가됐으므로 현재 tail을 변경한다(다음 index를 가리키게 한다)
 			}
 		}
 	}
@@ -170,9 +170,9 @@ public class ArrLinkedList_0903<E>
 				}
 				// while 문이 끝나면
 				// pre: 마지막노드 / ptr: 마지막 노드의 다음 커서
-				n[pre].next = NULL;	// 끝노드의 다음 커서는 null이다.
+				n[pre].next = NULL;	// 끝노드의 이전노드 next를 null로 변경한다.
 				deleteIndex(pre); // 마지막노드 삭제한다.
-				crnt = pre;
+				tail = crnt = pre; // 
 			}
 		}
 	}
@@ -186,6 +186,10 @@ public class ArrLinkedList_0903<E>
 			{
 				removeFirst(); // 머리노드 삭제
 			}
+			else if(p == tail)
+			{
+				removeLast(); // 꼬리노드 삭제
+			}
 			else 
 			{
 				int ptr = head; // 머리노드 저장
@@ -195,9 +199,9 @@ public class ArrLinkedList_0903<E>
 					ptr = n[ptr].next; // 다음커서 찾기
 					if (ptr == NULL) return; // 없는 경우
 				}
-				n[ptr].next = NULL; // 다음노드
+				n[ptr].next = NULL; // 지울 노드를 next로 가지고 있는 next 삭제
 				deleteIndex(ptr); // 찾은 노드 삭제
-				n[ptr].next = n[p].next; // 지운 노드의 다음노드를 가리키게 한다.
+				n[ptr].next = n[p].next; // 지울 노드의 next를 지울노드의 다음노드를 가리키게 한다.
 				crnt = ptr;
 			}
 		}
@@ -255,4 +259,68 @@ public class ArrLinkedList_0903<E>
 		}
 	}
 
+/* Q4: 서로 같은 노드를 찾아 가장 앞쪽의 노드를 남기고 모두 삭제한다. */	
+	public void purge(Comparator <? super E> c)
+	{
+		int ptr = head;
+		
+		while(ptr != NULL)
+		{
+			int count = 0;
+			int ptr2 = ptr;
+			int pre = ptr;
+			
+			while(n[pre].next != NULL)
+			{
+				ptr2 = n[pre].next;
+				if(c.compare(n[ptr].data, n[ptr2].data) == 0) // 같은 노드인 경우
+				{
+					remove(ptr2);
+					count++;
+				}
+				else
+				{
+					pre = ptr2;
+				}
+			}
+			
+			if(count == 0)
+			{
+				ptr = n[ptr].next;
+			}
+			else
+			{
+				int temp = ptr;
+				remove(ptr);
+				ptr = temp;
+			}
+		}
+		crnt = head;
+	}
+	
+/* ------------------------------------------------*/	
+
+/* Q2: 머리에서 n개 뒤의 노드에 대한 참조를 반환하는 메서드를 작성한다. */
+	public E retrieve(int n)
+	{
+		int ptr = head;
+		
+		// n이 음수거나 노드개수보다 크면 null을 반환한다.
+		while(n >= 0 && ptr != NULL)
+		{
+			if(n-- == 0)
+			{
+				crnt = ptr; // 찾은 노드를 가리키게 한다.
+				return this.n[ptr].data;
+			}
+			ptr = this.n[ptr].next;
+		}
+
+		return null;
+		
+	}
+
+/* ------------------------------------------------*/	
+	
+	
 }
