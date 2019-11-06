@@ -2,8 +2,6 @@ package CH09.practice;
 
 import java.util.Comparator;
 
-import CH09.practice.LinkedList_Q1.Node;
-
 /**
  * 연결리스트
  * 커서(인덱스)로 연결리스트 만들기
@@ -167,13 +165,13 @@ public class ArrLinkedList_Q4<E>
 
 				while (n[ptr].next != NULL) // 끝노드를 찾는다.
 				{
-					pre = ptr; // 끝노드를 찾는다.
-					ptr = n[ptr].next; // 현재 노드의 다음노드 커서를 찾는다.
+					pre = ptr;
+					ptr = n[ptr].next;
 				}
 				// while 문이 끝나면
-				// pre: 마지막노드 / ptr: 마지막 노드의 다음 커서
-				n[pre].next = NULL;	// 끝노드의 다음 커서는 null이다.
-				deleteIndex(pre); // 마지막노드 삭제한다.
+				// pre: 마지막노드의 앞노드 / ptr: 마지막 노드
+				n[pre].next = NULL;	// 끝노드 바로 앞쪽노드의 다음 커서는 null이다.
+				deleteIndex(ptr); // 마지막노드 삭제한다.
 				crnt = pre;
 			}
 		}
@@ -197,7 +195,7 @@ public class ArrLinkedList_Q4<E>
 					ptr = n[ptr].next; // 다음커서 찾기
 					if (ptr == NULL) return; // 없는 경우
 				}
-				n[ptr].next = NULL; // 지울 노드를 next로 가지고 있는 next 삭제
+				n[ptr].next = NULL; // 지울 노드 next를 null
 				deleteIndex(ptr); // 찾은 노드 삭제
 				n[ptr].next = n[p].next; // 지울 노드의 next를 지울노드의 다음노드를 가리키게 한다.
 				crnt = ptr;
